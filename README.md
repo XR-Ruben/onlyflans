@@ -161,9 +161,9 @@ onlyflans/
 
 ### Integrantes
 
-- Pepe Lopez
-  - [GitHub](<enlace github>)
-- Juana Gonzales
+- Rubén Mario Ramírez Itashiki
+  - [GitHub](https://github.com/XR-Ruben/onlyflans.git)
+- Jorge Rodriguez Oliva
   - [GitHub](<enlace github>)
 
 ### Contribuir
@@ -172,7 +172,7 @@ Si deseas contribuir a este proyecto, por favor sigue los siguientes pasos:
 
 1. Haz un fork del repositorio.
 2. Crea una rama con tu nueva característica (`git checkout -b feature/nueva-caracteristica`).
-3. Haz commit de tus cambios (`git commit -am 'Añadida nueva característica'`).
+3. Haz commit de tus cambios (`git commit -m 'Añadida nueva característica'`).
 4. Empuja tu rama (`git push origin feature/nueva-caracteristica`).
 5. Abre un Pull Request.
 
