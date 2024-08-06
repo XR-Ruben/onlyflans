@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 # Create your views here.
 def inicio(req):
-    return HttpResponse("MI PAGINA DE INICIO DE LA APP")
+    return HttpResponse("Bienvenidos a ONLYFLANS")
 
 def hola_mundo(req):
     return HttpResponse("Hola Mundo!!!")
@@ -14,8 +14,9 @@ def adios_mundo(req):
 def part_html(req):
     return HttpResponse("<h1>HOLA SOY UN H1 >>> MUNDO!!!</h1>")
 
-def template_dinamico(req):
+
+def home(req):
     context = {
-        "message": "Estoy utilizando un template dinámico!!!"
+        "message": "ONLYFLANS"
     }
-    return render(req, 'index.html', context)
+    return render(req, 'base.html', context)

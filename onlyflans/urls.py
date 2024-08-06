@@ -16,14 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from web.views import inicio, hola_mundo, adios_mundo, part_html, template_dinamico
+from web.views import inicio, hola_mundo, adios_mundo, part_html, home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', inicio),
+    path('inicio', inicio),
     path('hola', hola_mundo),
     path('adios/', adios_mundo),
     path('html/', part_html),
-    path('template/', template_dinamico),
+    path('', home),
     # VAN nuestras ROUTES
 ]
