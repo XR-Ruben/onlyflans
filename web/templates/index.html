@@ -3,36 +3,24 @@
 {% block content %}
 <div>
   <h1>BIENVENIDOS A ONLYFLANS</h1>
-  <h2>{{mensaje}}</h2>
-  <div id="productos">
-    {% for p in productos %}
-    <div class="card-group">
-      <div class="card">
-        <img src="../static/img/flan1.jpg" class="card-img-top" alt="img1">
-        <div class="card-body">
-          <h5 class="card-title">Flans 1</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+  <div class="container" id="home">
+    <hr />
+    <div class="row row-cols-1 row-cols-md-4 g-3">
+      {% for p in flanes_publicos %}
+      <div class="col">
+        <div class="card">
+          <img
+            src={{p.image_url}}
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{p.name}}</h5>
+            <p class="card-text">{{p.description}}</p>
+          </div>
         </div>
       </div>
-      <div class="card">
-        <img src="../static/img/flan2.jpg" class="card-img-top" alt="img2">
-        <div class="card-body">
-          <h5 class="card-title">Flans 2</h5>
-          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-        </div>
-      </div>
-      <div class="card">
-        <img src="../static/img/flan3.jpg" class="card-img-top" alt="img3">
-        <div class="card-body">
-          <h5 class="card-title">Flans 3</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-          <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-        </div>
-      </div>
-    </div>
-
+      
     {% endfor %}
 
   </div>

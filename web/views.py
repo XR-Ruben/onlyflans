@@ -1,21 +1,20 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import Flan
 # ----------------------------------------------------------------------------------------------
 ## VIEWS DE PROYECTO ONLYFLANS
 
 # Create your views here.
 
 def home(req): 
-    context = {
-        "mensaje": "Elija sus postres:",
-        "productos": [{"name": "tv", "url":"vvv"},{"name": "celu", "url":"www"},{"name": "mesa", "url":"zzz"}]
-    }
-    return render(req, 'index.html', context)
+    flanes_all = Flan.objects.all()
+    flanes_publicos = Flan.objects.filter(is_private=False)
+    return render(req, 'index.html', {"flanes_publicos": flanes_publicos})
 
 def about(req): 
     context = {
-        "mensaje": "Creado por Rubén Mario Ramírez para >> Desafío Latam 2024 <<",
+        "mensaje": "Aplicación creada para vender flanes de diferentes variedades...",
     }
+    
     return render(req, 'about.html', context)
 
 def header(req): 
