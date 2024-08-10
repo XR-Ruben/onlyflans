@@ -18,5 +18,5 @@ class ContactForm(models.Model):
     message = models.TextField()
     
     def __str__(self):
-        return self.customer_name
+       return self.customer_name
     

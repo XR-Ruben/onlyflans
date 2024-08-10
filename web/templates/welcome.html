@@ -2,7 +2,27 @@
 
 {% block content %}
 <div>
-  <h1>ONLYFLANS:</h1>
-  <h2>{{mensaje}}</h2>
+  <h1>BIENVENIDOS A ONLYFLANS</h1>
+  <div class="container" id="home">
+    <hr />
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      {% for p in private_publicos %}
+      <div class="col-6 col-md-3">
+        <div class="card mb-4" styles="" id="producto">
+          <img src="{{ p.image_url }}" class="card-img-top" id="card_img_top" alt="..." height="180px">
+          <div class="card-body">
+            <h5 class="card-title">
+              {{ p.name }}
+            </h5>
+            <p class="card-text">
+              {{ p.description | slice:":50" }}{% if p.description|length > 50 %}...{% endif %}
+            </p>
+          </div>
+        </div>
+      </div>
+      
+    {% endfor %}
+
+  </div>
 </div>
 {% endblock %}
