@@ -14,7 +14,13 @@ def home(req):
 
 def about(req): 
     context = {
-        "mensaje": "Aplicación creada para vender flanes de diferentes variedades...",
+        "mensaje": """Descubre el sabor auténtico en nuestra tienda de flanes. 
+                      Disfruta de una variedad de deliciosos flanes, desde los clásicos de 
+                      vainilla y caramelo hasta opciones gourmet como chocolate, coco y más. 
+                      Perfectos para cualquier ocasión, nuestros flanes son el postre ideal para 
+                      compartir en familia o sorprender a tus invitados. ¡Ven y endulza tu día con nosotros!"""
+
+,
     }
     
     return render(req, 'about.html', context)
@@ -33,9 +39,9 @@ def footer(req):
 
 
 def welcome(request):
-    # private_flans = [{"name": "flan 7", "image_url": "https://pbs.twimg.com/media/CA5u_1pWYAE6FK0.jpg", "description": "flan 7"},
-    #                  {"name": "flan 8", "image_url": "https://pbs.twimg.com/media/CA5u_1pWYAE6FK0.jpg", "description": "flan 8"},]
-    # return render(request,'welcome.html',{'private_flans': private_flans})
+    private_flans = [{"name": "Pineapple Dessert 'Cream' - Dutch", "image_url": "https://www.cookiedoughandovenmitt.com/wp-content/uploads/2021/03/Mint-Chocolate-Dessert-10-Photo-Cookie-Dough-and-Oven-Mitt.jpg", "description": "Reserve some of the crushed pineapple for garnish. Sprinkle gelatin over water in small saucepan; "},
+                     {"name": "Guiltless Pumpkin Dessert", "image_url": "https://supersisterfitness.com/wp-content/uploads/2013/11/pumpkinpie-1024x10241.jpg", "description": "Mix the pudding and the milk together as instructed on the box. Allow to set for 5 minutes. Mix together the pumpkin and pumpkin pie spice. Then fold in (don't beat) with the pudding mixture. Layer on the crumbs and then top with Cool Whip. "},]
+    return render(request,'welcome.html',{'private_flans': private_flans})
     private_flans = Flan.objects.filter(is_private=True)
     return render(request, 'welcome.html', {"private_flans": private_flans})
 
@@ -56,7 +62,7 @@ def contacto(request):
             return HttpResponseRedirect('/exito')
     else: 
         form = ContactFormForm()    
-    return render(request, 'contacto.html', {'form':form})
+        return render(request, 'contacto.html', {'form':form})
 
 # *  --- apply ContactModelForm ---
 # from .forms import ContactModelForm  # Asegúrate de importar el formulario correcto

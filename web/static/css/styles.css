@@ -19,7 +19,7 @@ header img {
   }
   #minav li{
     margin: 2px 20px;
-  }
+   /* }
   #productos{
     display: flex;
     flex-wrap: wrap;
@@ -27,7 +27,7 @@ header img {
   }
   #producto img{
   width: 240px;
-  height: 280px;
+  height: 240px;
   }
   #producto {
     margin: 12px 12px;
@@ -39,9 +39,6 @@ header img {
   
   /* style FORM CONTACTO */
   
-  form {
-   
-  }
   
   
   
