@@ -17,6 +17,6 @@ class ContactForm(models.Model):
     customer_name = models.CharField(max_length=64)
     message = models.TextField()
     
-    def __str__(self):
-       return self.customer_name
+def __str__(self):
+    return self.customer_name
     
