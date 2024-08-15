@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Flan, ContactForm
 from .forms import ContactFormForm, ContactModelForm
+from django.contrib.auth.decorators import login_required
 # ----------------------------------------------------------------------------------------------
 ## VIEWS DE PROYECTO ONLYFLANS
 
@@ -37,14 +38,13 @@ def footer(req):
     }
     return render(req, 'footer.html', context)
 
-
+@login_required
 def welcome(request):
     private_flans = Flan.objects.filter(is_private=True)
     return render(request, 'welcome.html', {"private_flans": private_flans})
 
 
 # *  <!-- apply FORM contacto -->
-
 def contacto(request):
     if request.method == 'POST':
         
