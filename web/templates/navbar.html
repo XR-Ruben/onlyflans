@@ -17,16 +17,16 @@
           <li class="nav-item">
             <a class="nav-link" href="/about">Acerca</a>
           </li>
-        
+
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/contacto"
               >Contacto</a
             >
-            <!-- <p>Formulario para contactarnos</p> -->
+           
           </li>
           {% if not user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'login' %}"
+            <a class="nav-link active btn btn-secondary text-white" aria-current="page" href="{% url 'login' %}"
               >Iniciar Sesión</a>
           </li>
           {% endif %} 
@@ -35,7 +35,7 @@
           <li class="nav-item">
             <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none">{% csrf_token %}</form>
             <a
-              class="nav-link btn btn-secondary text-black" href="#"
+              class="nav-link btn btn-secondary text-black" href="/"
               onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
 
               >Cerrar Sesión</a>
