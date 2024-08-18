@@ -68,3 +68,7 @@ def contacto(request):
 def exito(request):
     return render(request, 'exito.html', {})
 
+@login_required
+def gallery(request):
+    return render(request, 'gallery.html', {})
+

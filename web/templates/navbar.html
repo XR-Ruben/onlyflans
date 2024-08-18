@@ -20,10 +20,9 @@
 
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/contacto"
-              >Contacto</a
-            >
-           
-          </li>
+              >Contacto</a>
+           </li>
+
           {% if not user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link active btn btn-secondary text-white" aria-current="page" href="{% url 'login' %}"
@@ -39,6 +38,12 @@
               onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
 
               >Cerrar Sesión</a>
+          </li>
+          {% endif %}
+
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="/gallery">Galería de Fotos</a>
           </li>
           {% endif %}
 

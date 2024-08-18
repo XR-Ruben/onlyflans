@@ -28,4 +28,5 @@ urlpatterns = [
     path('welcome/', views.welcome, name="welcome"),
     path('contacto', views.contacto),
     path('exito', views.exito),
+    path('gallery', views.gallery),
 ]
