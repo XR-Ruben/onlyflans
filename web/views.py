@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Flan, ContactForm
 from .forms import ContactFormForm, ContactModelForm
 from django.contrib.auth.decorators import login_required
+from .models import Profile
+from .forms import ProfileForm, UserForm
 # ----------------------------------------------------------------------------------------------
 ## VIEWS DE PROYECTO ONLYFLANS
 
@@ -71,4 +73,35 @@ def exito(request):
 @login_required
 def gallery(request):
     return render(request, 'gallery.html', {})
+
+
+@login_required
+def profile_view(request):
+    # Verificar que el User tiene un Perfil 
+    user_id = request.user.id 
+    
+    user = request.user
+    #* User de no tener un Profile, crea la relación
+    if not hasattr(user, 'profile'):
+        Profile.objects.create(user=user)
+        profile = Profile.objects.get(user_id=user_id)
+        print(f'user profile get -> {profile.__dict__}')
+        
+    #* ARMADO POST - crea (guarda en la tabla) - y redirect
+    if request.method == 'POST':
+        user_form = UserForm(request.POST, instance=request.user)
+        profile_form = ProfileForm(request.POST, instance=request.user.profile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            # Redirigir a la misma página después de guardar
+            return redirect('/welcome')
+    #* GET FORM - Creamos los forms con los datos de la DB de ese user
+    else: 
+        user_form = UserForm(instance=request.user)
+        profile_form = ProfileForm(instance=request.user.profile)
+    return render(request, 'profile.html', {
+        'user_form': user_form,
+        'profile_form': profile_form,
+    })
 
