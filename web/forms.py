@@ -2,6 +2,7 @@ from django import forms
 from .models import ContactForm
 from django.contrib.auth.models import User
 from .models import Profile
+from django.contrib.auth.forms import UserCreationForm
 
 
 #*  --- apply ContactFormForm --- 
@@ -28,7 +29,23 @@ class ProfileForm(forms.ModelForm):
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email']        
+        fields = ['first_name', 'last_name', 'email']   
+        
+        
+#* REGISTER FORMS  
+
+class CustomUserCreationForm(UserCreationForm):
+    email = forms.EmailField(required=True, help_text='Requerido. Ingrese una dirección de correo electrónico válida.')
+
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password1', 'password2')
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError("Este correo electrónico ya está en uso.")
+        return email            
 """
 ContactForm que contenga los 
 siguientes atributos:

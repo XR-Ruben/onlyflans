@@ -6,14 +6,15 @@
   <div class="container" id="home">
     <div>
       <h2>Nuestros Productos:</h2>
+
       <div class="cajabuscar"><form method="get" id="buscarform" style="color: #000063;
-    text-align: right;">
-        <fieldset>
-            <input type="text" id="s" value="" placeholder="Buscar"  />
-            <input class="button" type="submit" value="Ir" />
-            <i class="search"></i>
-        </fieldset>
-        </form></div>
+       text-align: right;">
+        <form action="https://www.google.com/search" method="GET">
+          <input type="text" name="q" placeholder="Escribir...">
+          <input type="submit" value="Buscar">
+        </form>
+      </div>
+
       <h4 style="background-color:darkgray; text-align: center;">Elige el producto que prefieras...</h4>
     </div>
     <div class="row row-cols-1 row-cols-md-4 g-4">
@@ -36,6 +37,8 @@
 
   </div>
 </div>
+
 {% endblock %}
+
 
 

@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Flan, ContactForm
-from .forms import ContactFormForm, ContactModelForm
+from .forms import ContactFormForm, ContactModelForm, CustomUserCreationForm
 from django.contrib.auth.decorators import login_required
 from .models import Profile
 from .forms import ProfileForm, UserForm
+from django.contrib.auth import login
 # ----------------------------------------------------------------------------------------------
 ## VIEWS DE PROYECTO ONLYFLANS
 
@@ -105,3 +106,14 @@ def profile_view(request):
         'profile_form': profile_form,
     })
 
+
+def register(request):
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save() #* Se guarda el user en la DB
+            login(request, user) #* Se logea
+            return redirect('welcome')  # Redirige a la vista de perfil u otra vista
+    else:
+        form = CustomUserCreationForm()
+    return render(request, 'register.html', {'form': form})

@@ -30,4 +30,5 @@ urlpatterns = [
     path('exito', views.exito),
     path('gallery', views.gallery),
     path('profile/', views.profile_view, name='profile'),
+    path('register/', views.register, name='register'),
 ]
